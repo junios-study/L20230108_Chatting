@@ -14,7 +14,7 @@ void ALobbyPC::BeginPlay()
 
 	if (WidgetClass && IsLocalPlayerController())
 	{
-		LobbyWidgetObject = CreateWidget<UUserWidget>(this, WidgetClass);
+		LobbyWidgetObject = CreateWidget<ULobbyWidgetBase>(this, WidgetClass);
 		if (LobbyWidgetObject)
 		{
 			LobbyWidgetObject->AddToViewport();

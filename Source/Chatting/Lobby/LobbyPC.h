@@ -18,7 +18,7 @@ public:
 	virtual void BeginPlay() override;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "UI")
-	TObjectPtr<UUserWidget> LobbyWidgetObject;
+	TObjectPtr<ULobbyWidgetBase> LobbyWidgetObject;
 
 	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "UI")
 	//TSubclassOf<ULobbyWidgetBase> LobbyWidgetClass;

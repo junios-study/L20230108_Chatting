@@ -21,7 +21,7 @@ public:
 	void DecreasePlayerCount();
 
 protected:
-	UPROPERTY(ReplicatedUsing="OnRep_PlayerCount", BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(ReplicatedUsing=OnRep_PlayerCount, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	int32 PlayerCount;
 
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;

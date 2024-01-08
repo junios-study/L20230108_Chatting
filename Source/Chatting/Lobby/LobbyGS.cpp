@@ -3,6 +3,9 @@
 
 #include "LobbyGS.h"
 #include "Net/UnrealNetwork.h"
+#include "LobbyPC.h"
+#include "Kismet/GameplayStatics.h"
+#include "LobbyWidgetBase.h"
 
 void ALobbyGS::IncreasePlayerCount()
 {
@@ -19,6 +22,12 @@ void ALobbyGS::DecreasePlayerCount()
 //Server »©°í ½ÇÇà
 void ALobbyGS::OnRep_PlayerCount()
 {
+	ALobbyPC* PC = Cast<ALobbyPC>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+	if (PC && PC->LobbyWidgetObject)
+	{
+		//UI Update
+		PC->LobbyWidgetObject->UpdatePlayerCount(PlayerCount);
+	}
 }
 
 void ALobbyGS::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

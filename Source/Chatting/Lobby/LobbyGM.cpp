@@ -31,3 +31,14 @@ void ALobbyGM::Logout(AController* Exiting)
 
 	Super::Logout(Exiting);
 }
+
+void ALobbyGM::BeginPlay()
+{
+	Super::BeginPlay();
+
+	ALobbyGS* GS = GetGameState<ALobbyGS>();
+	if (GS)
+	{
+		GS->OnRep_PlayerCount(); //Only server call
+	}
+}
