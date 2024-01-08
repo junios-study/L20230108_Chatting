@@ -41,4 +41,28 @@ void ALobbyGM::BeginPlay()
 	{
 		GS->OnRep_PlayerCount(); //Only server call
 	}
+
+	FTimerHandle LeftTimerHandle;
+	//GetWorld()->GetTimerManager().SetTimer(LeftTimerHandle,
+	//	FTimerDelegate::CreateLambda(
+	//		[&]() {
+	//			if (GS)
+	//			{
+	//				GS->LeftTime--;
+	//				//GS->S2A_UpdateLeftTime(GS->LeftTime);
+	//			}
+	//		}
+	//	), 1.0f, true, -1.0f);
+
+	GetWorld()->GetTimerManager().SetTimer(LeftTimerHandle, this, &ALobbyGM::UpdateLeftTime, 1.0f, true, -1.0f);
+}
+
+void ALobbyGM::UpdateLeftTime()
+{
+	ALobbyGS* GS = GetGameState<ALobbyGS>();
+	if (GS)
+	{
+		GS->LeftTime--;
+		GS->S2A_UpdateLeftTime(GS->LeftTime);
+	}
 }

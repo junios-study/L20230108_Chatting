@@ -18,4 +18,6 @@ public:
 	virtual void Logout(AController* Exiting) override;
 
 	virtual void BeginPlay() override;
+
+	void UpdateLeftTime();
 };

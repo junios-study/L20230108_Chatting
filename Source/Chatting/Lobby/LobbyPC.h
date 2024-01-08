@@ -23,4 +23,13 @@ public:
 	//UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "UI")
 	//TSubclassOf<ULobbyWidgetBase> LobbyWidgetClass;
 	
+
+	UFUNCTION(Server, Unreliable, WithValidation)
+	void C2S_SendMessage(const FString& InMessage); //client call
+	bool C2S_SendMessage_Validate(const FString& InMessage);
+	void C2S_SendMessage_Implementation(const FString& InMessage); //server execute
+
+	UFUNCTION(Client, Reliable)
+	void S2C_SendMessage(const FString& InMessage); //Server Call
+	void S2C_SendMessage_Implementation(const FString& InMessage); //client execute
 };

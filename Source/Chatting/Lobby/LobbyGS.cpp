@@ -30,9 +30,21 @@ void ALobbyGS::OnRep_PlayerCount()
 	}
 }
 
+void ALobbyGS::S2A_UpdateLeftTime_Implementation(int InLeftTime)
+{
+	LeftTime = InLeftTime;
+
+	ALobbyPC* PC = Cast<ALobbyPC>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
+	if (PC && PC->LobbyWidgetObject)
+	{
+		//UI Update
+		PC->LobbyWidgetObject->UpdateLeftTime(LeftTime);
+	}
+}
+
 void ALobbyGS::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 	DOREPLIFETIME(ALobbyGS, PlayerCount);
-	//DOREPLIFETIME_CONDITION()
+	//DOREPLIFETIME_CONDITION(ALobbyGS, PlayerCount, COND_InitialOnly)
 }

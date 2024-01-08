@@ -27,6 +27,12 @@ protected:
 	virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 public:
+	int32 LeftTime = 60;
+
 	UFUNCTION()
 	void OnRep_PlayerCount();
+
+	UFUNCTION(NetMulticast, Unreliable)
+	void S2A_UpdateLeftTime(int InLeftTime); // call Server
+	void S2A_UpdateLeftTime_Implementation(int InLeftTime); //execute All Clients
 };
