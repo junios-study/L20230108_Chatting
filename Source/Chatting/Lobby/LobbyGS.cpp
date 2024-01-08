@@ -16,6 +16,11 @@ void ALobbyGS::DecreasePlayerCount()
 	UE_LOG(LogTemp, Warning, TEXT("PlayerCount %d"), PlayerCount);
 }
 
+//Server »©°í ½ÇÇà
+void ALobbyGS::OnRep_PlayerCount()
+{
+}
+
 void ALobbyGS::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);

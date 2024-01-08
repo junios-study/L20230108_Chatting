@@ -14,6 +14,7 @@ void ALobbyGM::PostLogin(APlayerController* NewPlayer)
 	if (GS)
 	{
 		GS->IncreasePlayerCount();
+		GS->OnRep_PlayerCount(); //Only server call
 	}
 }
 
@@ -24,6 +25,7 @@ void ALobbyGM::Logout(AController* Exiting)
 	if (GS)
 	{
 		GS->DecreasePlayerCount();
+		GS->OnRep_PlayerCount(); //Only server call
 	}
 
 

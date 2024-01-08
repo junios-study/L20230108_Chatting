@@ -7,6 +7,8 @@
 
 void ALobbyPC::BeginPlay()
 {
+	Super::BeginPlay();
+
 	FSoftClassPath LobbyWidgetClass(TEXT("/Script/UMGEditor.WidgetBlueprint'/Game/Blueprints/Lobby/WBP_Lobby.WBP_Lobby_C'"));
 	UClass* WidgetClass = LobbyWidgetClass.TryLoadClass<UUserWidget>();
 
