@@ -19,6 +19,12 @@ class CHATTING_API UTitleWidgetBase : public UUserWidget
 protected:
 	virtual void NativeConstruct() override;
 
+	UFUNCTION()
+	void ProcessMakeRoom();
+
+	UFUNCTION()
+	void ProcessConnectServer();
+
 
 public:
 	UPROPERTY(BlueprintReadOnly, EditAnywhere, Category = "Components")
